@@ -1,37 +1,45 @@
-const motds = [
-    "Try the mushroom stew!",
-    "Awesome!",
-    "GOTY!",
-    "Limited edition!",
-    "It's here!",
-    "More than 500 sold!",
-    "Holy cow, man!",
-    "The bee's knees!",
-    "Ceci n'est pas une title screen!",
-];
+document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("myButton");
+    const messageContainer = document.getElementById("myMessage");
 
-const getRandomInt = function(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
+    const motds = [
+        "Try the mushroom stew!",
+        "Awesome!",
+        "GOTY!",
+        "Limited edition!",
+        "It's here!",
+        "More than 500 sold!",
+        "Holy cow, man!",
+        "The bee's knees!",
+        "Ceci n'est pas une title screen!"
+    ];
 
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
-}
+    const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
-const showRandomMessage = function() {
-    const messageContainer = document.querySelector("#myMessage");
-    
-    const currentMessage = messageContainer.innerText;
-    const filteredMessages = motds.filter((motd) => motd !== currentMessage);
-    const randomIndex = getRandomInt(0, filteredMessages.length);
+    const showRandomMessage = () => {
+        let newMessage;
+        do {
+            newMessage = motds[getRandomInt(0, motds.length)];
+        } while (newMessage === messageContainer.innerText);
 
-    messageContainer.innerText = filteredMessages[randomIndex];
-}
+        
+        messageContainer.style.opacity = "0"; 
+        setTimeout(() => {
+            messageContainer.innerText = newMessage;
+            messageContainer.style.opacity = "1";
+        }, 100);
+    };
 
-const addButtonClickEvent = function() {
-    const buttonElement = document.querySelector("#myButton");
+    button.addEventListener("click", () => {
+        button.classList.add("rotate");
 
-    buttonElement.addEventListener("click", showRandomMessage);
-}
+        
+        setTimeout(() => {
+            button.classList.remove("rotate");
+        }, 1000);
 
-document.addEventListener("DOMContentLoaded", addButtonClickEvent);
-document.addEventListener("DOMContentLoaded", showRandomMessage);
+        showRandomMessage();
+    });
+
+    showRandomMessage(); 
+});

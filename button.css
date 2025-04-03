@@ -17,9 +17,32 @@ body {
     color: black;
     background-color: lightgray;
     font-weight: bold;
+    border: 2px solid rgb(240, 10, 10);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px red;
+    transition: box-shadow 0.3s ease;
+    
+    
 }
 
 #myMessage {
     color: black;
     text-shadow: 1px 1px 4px grey;
+}
+
+#myButton:hover {
+    background-color: rgb(240, 10, 10);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px red;
+}
+
+
+.rotate {
+    animation: rotateGlow 1s ease-in-out;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); box-shadow: 0 0 5px red; }
+    100% { transform: rotate(360deg); box-shadow: 0 0 20px red; }
 }
