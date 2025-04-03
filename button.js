@@ -4,10 +4,13 @@ const motds = [
     "GOTY!",
     "Limited edition!",
     "It's here!",
-    "More than 500 sold!",
+    "More than 999 sold!",
     "Holy cow, man!",
     "The bee's knees!",
     "Ceci n'est pas une title screen!",
+    " Achil kijkt Fortnite de hele tijd",
+    "Efe kijkt X de hele TIJD",
+    "Abdullah Werkt heel Hard en is een topper",
 ];
 
 const getRandomInt = function(min, max) {
